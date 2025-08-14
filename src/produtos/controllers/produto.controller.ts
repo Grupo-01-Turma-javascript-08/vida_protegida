@@ -1,6 +1,8 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
 import { ProdutoService } from "../services/produto.service";
 import { Produto } from "../entities/produto.entity";
+import { ManyToMany, ManyToOne } from "typeorm";
+import { Categoria } from "../../categoria/entities/categoria.entity";
 
 
 @Controller("/produtos")
@@ -27,13 +29,13 @@ export class ProdutoController{
         return this.produtoService.findById(id)
     }
 
-    @Post('/cadastrar')
+    @Post('/cadastra')
     @HttpCode(HttpStatus.CREATED)
     async create(@Body() produto: Produto): Promise<Produto>{
         return this.produtoService.create(produto)
     }
 
-    @Put('/atualizar')
+    @Put('/atualiza')
     @HttpCode(HttpStatus.OK)
     async update(@Body() produto: Produto): Promise<Produto>{
         return this.produtoService.update(produto)
@@ -46,5 +48,6 @@ export class ProdutoController{
     }
 
 
+  
 
 }

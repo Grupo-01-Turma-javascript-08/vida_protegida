@@ -19,6 +19,7 @@ export class CategoriaService {
 
     const categoria = await this.categoriaRepository.findOne({
       where: { id },
+      relations: ['produtos']
     });
 
     if (!categoria)

@@ -1,6 +1,8 @@
 import { Controller, Get, Param, HttpCode, HttpStatus, ParseIntPipe, Body, Post, Put, Delete } from '@nestjs/common';
 import { Categoria } from '../entities/categoria.entity';
 import { CategoriaService } from '../service/categoria.service';
+import { OneToMany } from 'typeorm';
+import { Produto } from '../../produtos/entities/produto.entity';
 
 
 @Controller("/categorias")
@@ -42,5 +44,6 @@ export class CategoriaController {
     delete(@Param('id', ParseIntPipe) id: number) {
         return this.categoriaService.delete(id);
     }
+
 
 }

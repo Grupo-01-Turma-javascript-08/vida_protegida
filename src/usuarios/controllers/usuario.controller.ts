@@ -27,7 +27,7 @@ export class UsuarioController{
         return this.usuarioService.findById(id)
     }
 
-    @Post('/cadastrar')
+    @Post('/cadastra')
     @HttpCode(HttpStatus.CREATED)
     async create(@Body() usuario: Usuario): Promise<Usuario>{
         return this.usuarioService.create(usuario)
@@ -45,6 +45,7 @@ export class UsuarioController{
     return this.usuarioService.delete(id);
     }
 
+    
 
 
 }

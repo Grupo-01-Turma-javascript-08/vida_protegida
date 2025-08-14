@@ -14,7 +14,7 @@ import { ProdutoModule } from './produtos/produto.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: '3112',
       database: 'db_vida_protegida',
       entities: [Usuario, Categoria, Produto],
       synchronize: true,
