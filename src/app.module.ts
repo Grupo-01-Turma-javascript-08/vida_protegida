@@ -4,6 +4,8 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { Categoria } from './categoria/entities/categoria.entity';
 import { Usuario } from './usuarios/entities/usuario.entity';
 import { UsuarioModule } from './usuarios/usuario.module';
+import { Produto } from './produtos/entities/produto.entity';
+import { ProdutoModule } from './produtos/produto.module';
 
 @Module({
   imports: [
@@ -14,12 +16,13 @@ import { UsuarioModule } from './usuarios/usuario.module';
       username: 'root',
       password: 'root',
       database: 'db_vida_protegida',
-      entities: [Usuario, Categoria],
+      entities: [Usuario, Categoria, Produto],
       synchronize: true,
       logging: true
     }),
     UsuarioModule,
-    CategoriaModule
+    CategoriaModule,
+    ProdutoModule
   ],
   controllers: [],
   providers: [],
