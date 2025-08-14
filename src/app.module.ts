@@ -6,6 +6,7 @@ import { Usuario } from './usuarios/entities/usuario.entity';
 import { UsuarioModule } from './usuarios/usuario.module';
 import { Produto } from './produtos/entities/produto.entity';
 import { ProdutoModule } from './produtos/produto.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { ProdutoModule } from './produtos/produto.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '3112',
+      password: '2639',
       database: 'db_vida_protegida',
       entities: [Usuario, Categoria, Produto],
       synchronize: true,
@@ -22,7 +23,9 @@ import { ProdutoModule } from './produtos/produto.module';
     }),
     UsuarioModule,
     CategoriaModule,
-    ProdutoModule
+    ProdutoModule,
+    AuthModule,
+  
   ],
   controllers: [],
   providers: [],
