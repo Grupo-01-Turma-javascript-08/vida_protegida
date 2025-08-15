@@ -65,16 +65,9 @@ export class UsuarioService {
 
   async update(usuario: Usuario): Promise<Usuario> {
     let usuarioUpdate: Usuario = await this.findById(usuario.id);
-    let usuarioBusca = await this.findByUsuario(usuario.usuario);
 
     if (!usuarioUpdate)
       throw new HttpException('Usuário não encontrado!', HttpStatus.NOT_FOUND);
-
-    if (usuarioBusca && usuarioBusca.id !== usuario.id)
-      throw new HttpException(
-        'Usuário (e-mail) já Cadastrado, digite outro!',
-        HttpStatus.BAD_REQUEST,
-      );
 
     usuario.senha = await this.bcrypt.criptografarSenha(usuario.senha);
     return await this.usuarioRepository.save(usuario);
