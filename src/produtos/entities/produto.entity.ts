@@ -23,13 +23,13 @@ export class Produto {
     @UpdateDateColumn()
     atualizadoEm: Date;
 
-    
-    @ManyToOne(() => Categoria, (categoria) => categoria.produtos, { 
+
+    @ManyToOne(() => Categoria, (categoria) => categoria.produtos, {
         nullable: false,
     })
     @JoinColumn({ name: 'categoriaId' })
     categoria: Categoria;
-    
+
     @ManyToOne(() => Usuario, (usuario) => usuario.produtos)
     usuario: Usuario;
 

@@ -15,7 +15,7 @@ import { AuthModule } from './auth/auth.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '2639',
+      password: '3112',
       database: 'db_vida_protegida',
       entities: [Usuario, Categoria, Produto],
       synchronize: true,
