@@ -59,6 +59,10 @@ export class UsuarioService {
       throw new HttpException('Usuário já cadastrado!', HttpStatus.BAD_REQUEST);
     }
 
+    if (usuario.idade < 18) {
+      throw new HttpException('Não elegível para este tipo de seguro!', HttpStatus.BAD_REQUEST);
+    }
+
     usuario.senha = await this.bcrypt.criptografarSenha(usuario.senha);
     return await this.usuarioRepository.save(usuario);
   }

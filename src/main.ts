@@ -9,7 +9,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Vida Protegida')
     .setDescription('Projeto Vida Protegida')
-    .setContact("TechGen7", "http://www.", "@email.com")
+    .setContact("TechGen7", "https://vida-protegida-2.onrender.com", "techgen7@email.com")
     .setVersion('1.0')
     .addBearerAuth()
     .build();

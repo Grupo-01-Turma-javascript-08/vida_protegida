@@ -20,11 +20,17 @@ export class Usuario {
     @ApiProperty()
     usuario: string;
 
+    @ApiProperty()
+    @Column()
+    idade: number;
+
     @MinLength(8)
     @IsNotEmpty()
     @Column({ length: 255, nullable: false })
     @ApiProperty()
     senha: string;
+
+
 
     @Column({ length: 5000 })
     @ApiProperty()
