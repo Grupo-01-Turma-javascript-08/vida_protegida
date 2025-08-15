@@ -4,9 +4,12 @@ import { Produto } from "../entities/produto.entity";
 import { ManyToMany, ManyToOne } from "typeorm";
 import { Categoria } from "../../categoria/entities/categoria.entity";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
+@ApiTags('Produto')
 @UseGuards(JwtAuthGuard)
 @Controller("/produtos")
+@ApiBearerAuth()
 export class ProdutoController {
 
     constructor(private readonly produtoService: ProdutoService){ }

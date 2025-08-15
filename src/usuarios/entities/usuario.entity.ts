@@ -1,6 +1,7 @@
 import { IsEmail, IsNotEmpty, MinLength } from "class-validator";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Produto } from "../../produtos/entities/produto.entity";
+import { ApiProperty } from "@nestjs/swagger";
 
 @Entity({ name: "tb_usuarios" })
 export class Usuario {
@@ -10,23 +11,28 @@ export class Usuario {
 
     @IsNotEmpty()
     @Column({ length: 255, nullable: false })
-    nome: string
+    @ApiProperty()
+    nome: string;
 
     @IsEmail()
     @IsNotEmpty()
     @Column({ length: 255, nullable: false })
-    usuario: string
+    @ApiProperty()
+    usuario: string;
 
     @MinLength(8)
     @IsNotEmpty()
     @Column({ length: 255, nullable: false })
-    senha: string
+    @ApiProperty()
+    senha: string;
 
     @Column({ length: 5000 })
-    foto: string
+    @ApiProperty()
+    foto: string;
 
     @Column({ length: 255 })
-    tipo: string
+    @ApiProperty()
+    tipo: string;
 
     @OneToMany(() => Produto, (produto) => produto.usuario, {
         onDelete: 'CASCADE',
