@@ -15,7 +15,7 @@ export class UsuarioService {
     @InjectRepository(Usuario)
     private usuarioRepository: Repository<Usuario>,
     private bcrypt: Bcrypt,
-  ) {}
+  ) { }
 
   async findByUsuario(usuarioname: string): Promise<Usuario | undefined> {
     const usuario = await this.usuarioRepository.findOne({
@@ -64,13 +64,23 @@ export class UsuarioService {
   }
 
   async update(usuario: Usuario): Promise<Usuario> {
+
     let usuarioUpdate: Usuario = await this.findById(usuario.id);
 
     if (!usuarioUpdate)
       throw new HttpException('Usuário não encontrado!', HttpStatus.NOT_FOUND);
 
+
+    let usuarioBusca = await this.findByUsuario(usuario.usuario);
+
+
+    if (usuarioBusca && usuarioBusca.id !== usuario.id) {
+      throw new HttpException('Usuário já existente!', HttpStatus.BAD_REQUEST);
+    }
     usuario.senha = await this.bcrypt.criptografarSenha(usuario.senha);
+
     return await this.usuarioRepository.save(usuario);
+
   }
 
   async delete(id: number): Promise<DeleteResult> {
